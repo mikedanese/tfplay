@@ -62,8 +62,10 @@ def model(model_type):
 		'd': tf.contrib.learn.DNNClassifier(feature_columns=deep_columns, hidden_units=[100,100,50,50],optimizer=optimizer),
 		'dl': tf.contrib.learn.DNNLinearCombinedClassifier(
         linear_feature_columns=wide_columns,
+        linear_optimizer=optimizer,
         dnn_feature_columns=deep_columns,
-        dnn_hidden_units=[100, 50]),
+        dnn_optimizer=optimizer,
+        dnn_hidden_units=[100, 100, 50, 50]),
   }[model_type]
 
 def input_fn(df):
